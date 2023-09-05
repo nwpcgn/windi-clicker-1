@@ -1,12 +1,17 @@
 <script>
-	export let src = './img/adult/gifa4.jpg'
+	export let src = './img/game/gifa4.jpg'
 	export let blur = false
 	export let gray = false
 	export let hide = false
+	export let contain = false
 </script>
 
-<section class="img-layer" {...$$restProps}>
-	<img {src} alt="img" class="layer-img" class:blur class:gray class:hide />
+<section class="img-layer" class:hide {...$$restProps}>
+	{#if !contain}
+		<img {src} alt="img" class="layer-img" class:blur class:gray />
+	{:else}
+		<img {src} alt="img" class="contain-image" />
+	{/if}
 </section>
 
 <style>
@@ -20,13 +25,22 @@
 			transform 500ms cubic-bezier(0.42, -0, 0.58, 1) 10ms;
 		overflow: hidden;
 		z-index: var(--z, auto);
+		display: flex;
+	}
+	.contain-image {
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: contain;
+		margin: auto 0 0;
 	}
 	.layer-img {
 		width: 100%;
 		height: 100%;
 		display: block;
 		object-fit: cover;
-		transition: opacity 800ms cubic-bezier(0.42, -0, 0.58, 1) 100ms, filter 500ms ease;
+		object-position: center;
+		transition: opacity 800ms cubic-bezier(0.42, -0, 0.58, 1) 100ms,
+			filter 500ms ease;
 	}
 	.layer-img {
 		--tw-blur: var(--tw-empty, /*!*/ /*!*/);
