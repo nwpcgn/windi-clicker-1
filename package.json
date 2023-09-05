@@ -1,0 +1,24 @@
+{
+  "name": "windi-clicker-1",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "elegua": "^2.1.1",
+    "svelte": "^4.0.5",
+    "svelte-fa": "^2.4.0",
+    "vite": "^4.4.5",
+    "vite-plugin-windicss": "^1.9.0",
+    "windicss": "^3.5.6"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@supabase/supabase-js": "^2.31.0"
+  }
+}

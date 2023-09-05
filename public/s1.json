@@ -1,0 +1,177 @@
+{
+  "67cc49db-dc2d-4fcc-afba-50b2620af4cb": {
+    "name": "Julie 8",
+    "character_uuid": "c27cef6d-42e1-4005-896c-eb97d7e32a22",
+    "portrait": "./img/avatar/robotess.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Es gibt diese coole Gruppe namens KAZE, und sie sind wie Ninja-Superhelden, die die Kraft des Windes nutzen, um große Probleme für unser Land zu lösen. \nEines Tages wurden sie gerufen, um einen äußerst seltsamen Meteoriten zu untersuchen, der einschlug."
+    },
+    "next": "832400d6-a46b-4134-b0ef-f86dd99b7a64",
+    "signals": {
+      "setStep": {
+        "Number": "1"
+      },
+      "parent": "67cc49db-dc2d-4fcc-afba-50b2620af4cb"
+    },
+    "parent": "root"
+  },
+  "832400d6-a46b-4134-b0ef-f86dd99b7a64": {
+    "name": "Julie-8",
+    "character_uuid": "c27cef6d-42e1-4005-896c-eb97d7e32a22",
+    "portrait": "./img/avatar/robotess.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Doch während sie Nachforschungen anstellten, wurden zwei der KAZE-Mitglieder, Seifu und Akafu, von dieser seltsamen Kreatur namens Bagrian angegriffen. \nUnd rate was? Sogar der Anführer von KAZE, Kurokaze, wurde von Bagrian übernommen und begann, sie ebenfalls anzugreifen!"
+    },
+    "parent": "67cc49db-dc2d-4fcc-afba-50b2620af4cb",
+    "next": "2eadc517-7905-4aec-9a4a-94af2dc167c1",
+    "signals": {
+      "setSteb": {
+        "Number": "2"
+      },
+      "parent": "832400d6-a46b-4134-b0ef-f86dd99b7a64"
+    }
+  },
+  "2eadc517-7905-4aec-9a4a-94af2dc167c1": {
+    "name": "Julie-8",
+    "character_uuid": "c27cef6d-42e1-4005-896c-eb97d7e32a22",
+    "portrait": "./img/avatar/robotess.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Das Team wurde aufgeteilt und der blaue Wind und der rote Wind gingen getrennte Wege. \nDoch dann wurde Akakaze von Kurokaze und seinem Bugrian-Tentakel gefangen und Seikaze musste sich nacheinander all diesen verschiedenen Bugrian-Angriffen stellen. Es ist auf jeden Fall ein verrücktes Abenteuer!"
+    },
+    "parent": "832400d6-a46b-4134-b0ef-f86dd99b7a64",
+    "signals": {
+      "setStep": {
+        "Number": "3"
+      },
+      "parent": "2eadc517-7905-4aec-9a4a-94af2dc167c1"
+    },
+    "next": "6e722d66-83b0-45aa-b2ed-40d0a7711495"
+  },
+  "6e722d66-83b0-45aa-b2ed-40d0a7711495": {
+    "name": "Dee Model",
+    "character_uuid": "2f67ff30-5c4f-4d9f-a881-6fbe4b593840",
+    "portrait": "./img/avatar/maid.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Was willstz du tun?"
+    },
+    "choices": [
+      {
+        "text": {
+          "en": "",
+          "fr": "",
+          "de": "Mehr ueber die Story erfahren"
+        },
+        "next": "4700a06f-1b7b-4abc-8126-3ac67001c7fe",
+        "parent": "6e722d66-83b0-45aa-b2ed-40d0a7711495"
+      },
+      {
+        "text": {
+          "en": "",
+          "fr": "",
+          "de": "Ich weiss genug. Lets play!"
+        },
+        "next": "5330faf4-cfc0-45c5-a00d-6185d6003115",
+        "parent": "6e722d66-83b0-45aa-b2ed-40d0a7711495"
+      }
+    ],
+    "parent": "2eadc517-7905-4aec-9a4a-94af2dc167c1"
+  },
+  "4700a06f-1b7b-4abc-8126-3ac67001c7fe": {
+    "name": "Julie-8",
+    "character_uuid": "c27cef6d-42e1-4005-896c-eb97d7e32a22",
+    "portrait": "./img/avatar/robotess.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Dann folge mir!"
+    },
+    "parent": "d2ed420e-f900-4c0f-876b-dcf29d4e2a66",
+    "signals": {
+      "parent": "4700a06f-1b7b-4abc-8126-3ac67001c7fe",
+      "showString": {
+        "String": "string"
+      },
+      "showNumber": {
+        "Number": "2"
+      },
+      "showEmpty": {}
+    },
+    "next": "e8580791-9ef6-4ba5-b383-b001020f6450"
+  },
+  "5330faf4-cfc0-45c5-a00d-6185d6003115": {
+    "name": "Dee Model",
+    "character_uuid": "2f67ff30-5c4f-4d9f-a881-6fbe4b593840",
+    "portrait": "./img/avatar/maid.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Dann gehts jetzt los!"
+    },
+    "parent": "3e181bab-50a3-4f50-8cdc-9c7c1cb048c6",
+    "signals": {
+      "parent": "5330faf4-cfc0-45c5-a00d-6185d6003115",
+      "setGame": {
+        "String": "start"
+      },
+      "startGame": {}
+    },
+    "next": "46b24a8b-260e-47e0-89b5-b7d198d65390"
+  },
+  "46b24a8b-260e-47e0-89b5-b7d198d65390": {
+    "name": "Dee Model",
+    "character_uuid": "2f67ff30-5c4f-4d9f-a881-6fbe4b593840",
+    "portrait": "./img/avatar/maid.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Level 1"
+    },
+    "parent": "5330faf4-cfc0-45c5-a00d-6185d6003115",
+    "next": "a8659313-96f6-4cef-a505-c9c17714cbae"
+  },
+  "a8659313-96f6-4cef-a505-c9c17714cbae": {
+    "name": "Dee Model",
+    "character_uuid": "2f67ff30-5c4f-4d9f-a881-6fbe4b593840",
+    "portrait": "./img/avatar/maid.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Level 2"
+    },
+    "parent": "46b24a8b-260e-47e0-89b5-b7d198d65390"
+  },
+  "e8580791-9ef6-4ba5-b383-b001020f6450": {
+    "name": "Julie-8",
+    "character_uuid": "c27cef6d-42e1-4005-896c-eb97d7e32a22",
+    "portrait": "./img/avatar/robotess.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Info 1"
+    },
+    "parent": "4700a06f-1b7b-4abc-8126-3ac67001c7fe",
+    "next": "4833c930-dfe3-4df7-9ac4-3dcc1805a430"
+  },
+  "4833c930-dfe3-4df7-9ac4-3dcc1805a430": {
+    "name": "Julie-8",
+    "character_uuid": "c27cef6d-42e1-4005-896c-eb97d7e32a22",
+    "portrait": "./img/avatar/robotess.png",
+    "text": {
+      "en": "",
+      "fr": "",
+      "de": "Info 2"
+    },
+    "parent": "e8580791-9ef6-4ba5-b383-b001020f6450"
+  },
+  "root": {
+    "next": "67cc49db-dc2d-4fcc-afba-50b2620af4cb"
+  }
+}
