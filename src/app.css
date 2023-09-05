@@ -17,14 +17,14 @@ body {
   flex-direction: column;
 }
 
-.sign-form {
+/* .sign-form {
   width: 100%;
   max-width: 320px;
   padding: 1rem;
   margin: auto;
   border: 1px solid var(--bs-border-color, #eeeeee);
   border-radius: var(--bs-border-radius, 0.25rem);
-}
+} */
 
 .layer {
   width: 100%;
@@ -41,7 +41,7 @@ body {
   z-index: var(--z, auto);
 }
 
-.site {
+/* .site {
   width: 100%;
   position: absolute;
   top: 0;
@@ -62,13 +62,13 @@ svg.icon {
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
-}
+} */
 
 body {
   @apply bg-white text-gray-600;
 }
 
-.glass-bg {
+/* .glass-bg {
   --bg: url(https://nwp-cgn.de/img/b4.png);
   background-image: var(--bg);
   background-position: center center;
@@ -79,9 +79,9 @@ body {
 .glass-panel {
   position: absolute;
   inset: 2rem;
-}
+} */
 
-.glass-panel {
+/* .glass-panel {
   background-color: rgba(255, 255, 255, 0.95);
   border-radius: 5px;
   padding: 1rem;
@@ -94,7 +94,7 @@ body {
     background-color: rgba(255, 255, 255, 0.7);
   }
 }
-
+ */
 .btn {
   @apply capitalize py-2 px-3 leading-tight font-light rounded-none border text-center transition-all duration-100 shadow;
 }

@@ -1,5 +1,4 @@
 <script>
-	import { sleep, _user, addkomma, clickOutside } from './db'
 	import ClickerGrid from './clickergame/ClickerGrid.svelte'
 	import G1Btn from './clickergame/G1Btn.svelte'
 	import G1SideBar from './clickergame/G1Sidebar.svelte'

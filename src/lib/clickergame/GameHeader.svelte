@@ -1,5 +1,5 @@
 <script>
-	import { addkomma } from '../db'
+	import { addkomma } from '../util'
 	export let game
 </script>
 

@@ -166,12 +166,5 @@
 		overflow: hidden;
 	}
 
-	.layer-img {
-		width: 100%;
-		height: 100%;
-		display: block;
-		object-fit: cover;
-		transition: opacity 600ms cubic-bezier(0.42, -0, 0.58, 1) 50ms,
-			transform 500ms ease-in-out 10ms, filter 500ms ease;
-	}
+
 </style>

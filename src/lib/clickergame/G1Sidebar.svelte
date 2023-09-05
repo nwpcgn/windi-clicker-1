@@ -1,5 +1,5 @@
 <script>
-	import { clickOutside } from '../db'
+	import { clickOutside } from '../util'
 	export let sb = false
 	const close = () => {
 		sb = false

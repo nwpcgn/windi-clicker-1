@@ -2,13 +2,8 @@
 	import Game1 from './lib/Game1.svelte'
 	import Loader from './lib/Loader.svelte'
 	import Toasts from './lib/notes/Toasts.svelte'
-	import { sleep, _user } from './lib/db'
-	import { onDestroy, onMount } from 'svelte'
-	import { path, resolve, params, match } from 'elegua'
-
-	onMount(() => {
-		$_user = { id: 'd2c2a5ee-c32a-4dcc-911f-fc7bfc7dddbb' }
-	})
+	import { sleep } from './lib/util'
+	import { path } from 'elegua'
 
 	let promise = sleep(1000)
 </script>
@@ -31,5 +26,3 @@
 		{/if}
 	{/await}
 </main>
-
-

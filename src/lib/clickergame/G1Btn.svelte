@@ -1,13 +1,14 @@
 <script>
 	import MoveObj from './MoveObj.svelte'
+	const click_audio = new Audio('./audio/open1.ogg')
 	let w = 0,
 		h = 0,
 		x = 0,
 		y = 0,
 		t1,
 		t2,
-		ow = 50,
-		oh = 50,
+		ow = 52,
+		oh = 56,
 		keyCode,
 		maxX,
 		maxY
@@ -17,10 +18,24 @@
 	export let showing = false
 	export let active = false
 
+	const playAudio = (audioObj) => {
+		audioObj.volume = 0.2
+		if (audioObj.duration > 0 && !audioObj.paused) {
+			//already playing
+			audioObj.pause()
+			audioObj.currentTime = 0
+			audioObj.play()
+		} else {
+			//not playing
+			audioObj.play()
+		}
+	}
+
 	const getRandInt = (min, max) => Math.random() * (max - min) + min
 
 	const clickAction = () => {
 		addObj()
+		playAudio(click_audio)
 		game.total += game.ticker.click
 	}
 	const hiding = () => {
@@ -67,14 +82,14 @@
 
 		const d = new MoveObj({
 			target: gameObj,
-			props: { x, y, ow, oh, w, h }
+			props: { x, y, ow, oh, w, context: game.total }
 		})
 		d.$on('close', () => d.$destroy())
 	}
 
 	const addObj = () => {
 		let inX = getRandInt(5, maxX),
-			inY = getRandInt(5, maxY)
+			inY = getRandInt(50, maxY)
 		x = inX.toFixed(0)
 		y = inY.toFixed(0)
 		insertObj()
@@ -87,7 +102,7 @@
 	bind:this={gameObj}
 	bind:clientHeight={h}
 	bind:clientWidth={w}
-	class="p-4 flex items-center justify-center relative flex-1 border-4 border-dashed">
+	class="p-4 flex items-center justify-center relative flex-1 border border-dashed">
 	<button
 		style="--bw: 8px; --py: 2rem; --fs: 1.8rem;"
 		class="sf-panel block text-center w-full"
@@ -105,12 +120,6 @@
 			</span>
 		</div>
 	</footer>
-	<header
-		class="absolute top-1 right-1 bg-gray-900 text-white p-1 rounded p-2 flex flex-col">
-		<span>Canvas: W: {w} | H: {h}</span>
-		<span>Layer: X: {x} | Y: {y}</span>
-	</header>
-	<!-- <MoveObj bind:x bind:y /> -->
 </div>
 
 <svelte:window on:keydown={handleKeydown} on:keyup={handleKeyUp} />

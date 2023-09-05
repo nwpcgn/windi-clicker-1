@@ -1,10 +1,12 @@
 <script>
-	import { slide } from 'svelte/transition';
+	import { slide } from 'svelte/transition'
 	// import Fa from 'svelte-fa/src/fa.svelte'
 	// import { faSpinner, faSync } from '@fortawesome/free-solid-svg-icons'
 </script>
 
-<div class="fullScreen transition-all ease-in-out" transition:slide={{duration: 450}}>
+<div
+	class="fullScreen transition-all ease-in-out"
+	transition:slide={{ duration: 450 }}>
 	<div>
 		<div class="spinner" />
 	</div>

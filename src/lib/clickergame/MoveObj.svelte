@@ -8,11 +8,11 @@
 		ow = 50,
 		oh = 50,
 		w = 100,
-		h = 100
+		context = '1'
 
 	let hiding = false
 	const setTimer = () => {
-		sleep(500)
+		sleep(70)
 			.then(() => {
 				hiding = true
 				x = getRandInt(0, w)
@@ -31,22 +31,75 @@
 	$: dispatch(open ? 'open' : 'close')
 </script>
 
-<div
+<aside
 	style="--x: {x}px; --y: {y}px; --h: {oh}px; --w: {ow}px;"
-	class="border border-dashed border-red-600 border-4 rounded-md"
-	on:mousedown={() => (open = false)}>
-	<!-- <div><button on:click={() => open = false}>Close</button></div> -->
-</div>
+	on:pointerdown={() => (open = false)}>
+	<div>
+		<span class="sr-only">{context}</span>
+	</div>
+</aside>
 
 <style>
-	div {
+	aside {
 		position: absolute;
-		display: inline-flex;
-		width: var(--w, 50px);
-		height: var(--h, 50px);
+		display: flex;
+		width: var(--w, 52px);
+		height: var(--h, 56px);
 		top: 0;
 		left: 0;
 		transform: translate(var(--x, 0), var(--y, 0));
-		transition: transform 2s ease-in-out;
+		transition: transform 2s ease-in;
+	}
+
+	div {
+		flex: 1;
+		position: relative;
+	}
+	div {
+		width: 52px;
+		height: 56px;
+		background: url('./img/game/boom.png');
+	}
+
+	div {
+		animation: animGuy 1s steps(6) forwards;
+		animation-delay: 0.5s;
+	}
+
+	/* span {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		animation-name: stretch;
+		animation-duration: 2s;
+		animation-timing-function: ease-in;
+		animation-delay: 0;
+		animation-direction: alternate;
+		animation-iteration-count: infinite;
+		animation-fill-mode: none;
+		animation-play-state: running;
+	}
+
+	@keyframes stretch {
+		0% {
+			transform: scale(0.3);
+		}
+		100% {
+			transform: scale(0.9);
+		}
+	} */
+
+	@keyframes animGuy {
+		0% {
+			background-position-x: 0;
+		}
+		100% {
+			background-position-x: -312px;
+		}
 	}
 </style>
