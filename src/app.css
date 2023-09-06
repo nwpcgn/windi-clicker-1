@@ -126,7 +126,9 @@ body {
 .form-control {
   @apply w-full px-3 py-2 placeholder-gray-300 text-gray-600 relative bg-white rounded border-0 shadow outline-none focus:outline-none focus:ring w-full;
 }
-
+.form-control:disabled {
+  @apply text-gray-400;
+}
 .form-group {
   margin-bottom: 1rem;
 }

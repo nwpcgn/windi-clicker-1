@@ -6,7 +6,9 @@
 <div class="p-4">
 	<header class="header-grid">
 		<div class="logo">
-			<h1 class="font-bold font-serif text-4xl">{game.meta.name}</h1>
+			<h1 class="font-bold font-serif text-4xl">
+				<a href="/">{game.meta.name}</a>
+			</h1>
 		</div>
 		<div class="stat">
 			<div class="sf-panel">
