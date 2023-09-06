@@ -1,9 +1,17 @@
 <script>
+	import { fly, fade } from 'svelte/transition'
+	import { quintIn } from 'svelte/easing'
 	export let hide = false
 	export let body = false
 </script>
 
-<section class="game-layer" class:body class:hide {...$$restProps}>
+<section
+	in:fly={{ duration: 400, y: 300, easing: quintIn, delay: 50 }}
+	out:fade={{ duration: 200, delay: 50 }}
+	class="game-layer"
+	class:body
+	class:hide
+	{...$$restProps}>
 	<slot />
 </section>
 

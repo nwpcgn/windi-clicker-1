@@ -78,7 +78,7 @@
 	<span class="sr-only">Click me!</span>
 </button>
 <span class="h-12 w-12" />
-<button class="flex h-12 items-center justify-center w-12">
+<a href="/settings" class="flex h-12 items-center justify-center w-12">
 	<svg
 		xmlns="http://www.w3.org/2000/svg"
 		viewBox="0 0 24 24"
@@ -93,7 +93,7 @@
 		</g>
 	</svg>
 	<span class="sr-only">Click me!</span>
-</button>
+</a>
 
 <!-- <style>
 	.page-grid .aside,

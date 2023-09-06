@@ -49,7 +49,21 @@
 		},
 		meta: {
 			name: 'SpacePrison',
-			titel: 'Savage Submarine Legend'
+			titel: 'Savage Submarine Legend',
+			player: '',
+			set: {
+				auto_save: false,
+				auto_save_int: 30000,
+				tick_int: 1000,
+				muted: false,
+				volume: 0.2
+			},
+			op: {
+				op1: false,
+				op2: false,
+				op3: false,
+				op4: false
+			}
 		}
 	}
 	const adapter = {
@@ -59,12 +73,17 @@
 		},
 		titel: {
 			type: 'text',
+			disabled: true
+		},
+		player: {
+			type: 'text',
 			disabled: false
 		}
 	}
 	const nav = [
 		{ titel: 'Start', href: '/' },
-		{ titel: 'Game', href: '/game' }
+		{ titel: 'Game', href: '/game' },
+		{ titel: 'Settings', href: '/settings' }
 	]
 	let active = false
 	let running = false
@@ -87,23 +106,29 @@
 			<section
 				class="w-full max-w-sm m-auto border-4 border-blue-500 rounded-md p-2 bg-gray-900 text-blue-500 bg-opacity-75">
 				<div class="flex flex-col gap-1 p-2">
-					{#each Object.entries(game.meta) as [key, val] (key)}
-						<div>
-							<label for="f-{key}" class="capitalize">{key}</label>
-							<input
-								value={val}
-								class="form-control"
-								type={adapter[key].type}
-								disabled={adapter[key].disabled}
-								name="f-{key}"
-								id="f-{key}" />
-						</div>
-					{:else}
-						<div>no Entries</div>
-					{/each}
-					<div class="grid pt-4">
-						<a href="/game" class="btn">Start</a>
-					</div>
+					{#if game.meta}
+						{#each Object.entries(game.meta) as [key, val] (key)}
+							{#if typeof val === 'string' || typeof val === 'number'}
+								<div>
+									<label for="f-{key}" class="capitalize">{key}</label>
+									<input
+										value={val}
+										class="form-control"
+										type={adapter[key].type}
+										disabled={adapter[key].disabled}
+										name="f-{key}"
+										id="f-{key}" />
+								</div>
+							{/if}
+						{/each}
+					{/if}
+					<nav class="grid gap-2 pt-4">
+						{#each nav as { titel, href }}
+							{#if $path !== href}
+								<a {href} class="btn">{titel}</a>
+							{/if}
+						{/each}
+					</nav>
 				</div>
 			</section>
 		</Layer>
@@ -135,6 +160,39 @@
 					</div>
 				{/each}
 			</div>
+		</Layer>
+	{:else if $path === '/settings'}
+		<ImageLayer src="./img/game/d01.png" />
+		<Layer>
+			<section
+				class="w-full max-w-sm m-auto border-4 border-blue-500 rounded-md p-2 bg-gray-900 text-blue-500 bg-opacity-75">
+				<div class="flex flex-col gap-1 p-2">
+					{#if game.meta}
+						{#each Object.entries(game.meta) as [key, val] (key)}
+							{#if typeof val === 'string' || typeof val === 'number'}
+								<div>
+									<label for="f-{key}" class="capitalize">{key}</label>
+									<input
+										value={val}
+										class="form-control"
+										type={adapter[key].type}
+										disabled={adapter[key].disabled}
+										name="f-{key}"
+										id="f-{key}" />
+								</div>
+							{/if}
+						{/each}
+					{/if}
+
+					<nav class="grid gap-2 pt-4">
+						{#each nav as { titel, href }}
+							{#if $path !== href}
+								<a {href} class="btn">{titel}</a>
+							{/if}
+						{/each}
+					</nav>
+				</div>
+			</section>
 		</Layer>
 	{:else}
 		<Layer>

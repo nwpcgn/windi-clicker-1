@@ -16,7 +16,7 @@
 			.then(() => {
 				hiding = true
 				x = getRandInt(0, w)
-				y = -100
+				y = -200
 			})
 			.then(() => sleep(1800))
 			.then(() => {
@@ -48,7 +48,7 @@
 		top: 0;
 		left: 0;
 		transform: translate(var(--x, 0), var(--y, 0));
-		transition: transform 2s ease-in;
+		transition: transform 1.5s ease-in;
 	}
 
 	div {
@@ -62,7 +62,7 @@
 	}
 
 	div {
-		animation: animGuy 1s steps(6) forwards;
+		animation: animGuy 1.1s steps(6) forwards;
 		animation-delay: 0.5s;
 	}
 

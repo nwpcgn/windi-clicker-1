@@ -1,4 +1,5 @@
 <script>
+	import { fade } from 'svelte/transition'
 	export let src = './img/game/gifa4.jpg'
 	export let blur = false
 	export let gray = false
@@ -6,7 +7,11 @@
 	export let contain = false
 </script>
 
-<section class="img-layer" class:hide {...$$restProps}>
+<section
+	transition:fade={{ duration: 250 }}
+	class="img-layer"
+	class:hide
+	{...$$restProps}>
 	{#if !contain}
 		<img {src} alt="img" class="layer-img" class:blur class:gray />
 	{:else}
@@ -42,7 +47,7 @@
 		transition: opacity 800ms cubic-bezier(0.42, -0, 0.58, 1) 100ms,
 			filter 500ms ease;
 	}
-	.layer-img {
+	img {
 		--tw-blur: var(--tw-empty, /*!*/ /*!*/);
 		--tw-brightness: var(--tw-empty, /*!*/ /*!*/);
 		--tw-contrast: var(--tw-empty, /*!*/ /*!*/);
@@ -62,10 +67,10 @@
 	.hide {
 		opacity: 0;
 	}
-	.blur {
+	img.blur {
 		--tw-blur: blur(8px);
 	}
-	.gray {
+	img.gray {
 		--tw-grayscale: grayscale(100%);
 	}
 </style>
