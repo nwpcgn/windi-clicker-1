@@ -1,7 +1,10 @@
 <script>
+	import { _settings } from '../lib/clickergame/clicker'
+	import NotFound from './NotFound.svelte'
 	import { onMount } from 'svelte'
 	import { path } from 'elegua'
 	import ClickerGrid from '../lib/clickergame/ClickerGrid.svelte'
+	import FormPanel from '../lib/clickergame/FormPanel.svelte'
 	import G1Btn from '../lib/clickergame/G1Btn.svelte'
 	import G1SideBar from '../lib/clickergame/G1Sidebar.svelte'
 	import Game1Aside from '../lib/clickergame/Game1Aside.svelte'
@@ -83,7 +86,8 @@
 	const nav = [
 		{ titel: 'Start', href: '/' },
 		{ titel: 'Game', href: '/game' },
-		{ titel: 'Settings', href: '/settings' }
+		{ titel: 'Settings', href: '/settings' },
+		{ titel: 'Not Found', href: '/notfound' }
 	]
 	let active = false
 	let running = false
@@ -103,34 +107,31 @@
 	{#if $path === '/'}
 		<ImageLayer src="./img/game/d02.png" />
 		<Layer>
-			<section
-				class="w-full max-w-sm m-auto border-4 border-blue-500 rounded-md p-2 bg-gray-900 text-blue-500 bg-opacity-75">
-				<div class="flex flex-col gap-1 p-2">
-					{#if game.meta}
-						{#each Object.entries(game.meta) as [key, val] (key)}
-							{#if typeof val === 'string' || typeof val === 'number'}
-								<div>
-									<label for="f-{key}" class="capitalize">{key}</label>
-									<input
-										value={val}
-										class="form-control"
-										type={adapter[key].type}
-										disabled={adapter[key].disabled}
-										name="f-{key}"
-										id="f-{key}" />
-								</div>
-							{/if}
-						{/each}
-					{/if}
-					<nav class="grid gap-2 pt-4">
-						{#each nav as { titel, href }}
-							{#if $path !== href}
-								<a {href} class="btn">{titel}</a>
-							{/if}
-						{/each}
-					</nav>
-				</div>
-			</section>
+			<FormPanel>
+				{#if game.meta}
+					{#each Object.entries(game.meta) as [key, val] (key)}
+						{#if typeof val === 'string' || typeof val === 'number'}
+							<div>
+								<label for="f-{key}" class="capitalize">{key}</label>
+								<input
+									value={val}
+									class="form-control"
+									type={adapter[key].type}
+									disabled={adapter[key].disabled}
+									name="f-{key}"
+									id="f-{key}" />
+							</div>
+						{/if}
+					{/each}
+				{/if}
+				<nav class="grid gap-2 pt-4">
+					{#each nav as { titel, href }}
+						{#if $path !== href}
+							<a {href} class="btn">{titel}</a>
+						{/if}
+					{/each}
+				</nav>
+			</FormPanel>
 		</Layer>
 	{:else if $path === '/game'}
 		<ImageLayer hide={running} blur gray src="./img/game/gifa4.jpg" />
@@ -164,44 +165,66 @@
 	{:else if $path === '/settings'}
 		<ImageLayer src="./img/game/d01.png" />
 		<Layer>
-			<section
-				class="w-full max-w-sm m-auto border-4 border-blue-500 rounded-md p-2 bg-gray-900 text-blue-500 bg-opacity-75">
-				<div class="flex flex-col gap-1 p-2">
-					{#if game.meta}
-						{#each Object.entries(game.meta) as [key, val] (key)}
-							{#if typeof val === 'string' || typeof val === 'number'}
-								<div>
-									<label for="f-{key}" class="capitalize">{key}</label>
+			<FormPanel>
+				{#if $_settings}
+					{#if $_settings.set}
+						{#each Object.entries($_settings.set) as [key, val] (key)}
+							{#if typeof val === 'number'}
+								<div class="flex flex-col gap-1">
+									<label for="ss-{key}" class="capitalize">{key}</label>
 									<input
 										value={val}
 										class="form-control"
-										type={adapter[key].type}
-										disabled={adapter[key].disabled}
-										name="f-{key}"
-										id="f-{key}" />
+										type="number"
+										min={key === 'volume' ? 0 : 1000}
+										max={key === 'volume' ? 1 : 60000}
+										step={key === 'volume' ? 0.1 : 1000}
+										name="ss-{key}"
+										id="ss-{key}" />
+								</div>
+							{:else if typeof val === 'boolean'}
+								<div class="flex items-center justify-between">
+									<label for="ss-{key}" class="capitalize">{key}</label>
+									<input
+										checked={val}
+										class="h-5 w-5"
+										type="checkbox"
+										name="ss-{key}"
+										id="ss-{key}" />
 								</div>
 							{/if}
 						{/each}
+
+
 					{/if}
 
-					<nav class="grid gap-2 pt-4">
-						{#each nav as { titel, href }}
-							{#if $path !== href}
-								<a {href} class="btn">{titel}</a>
-							{/if}
-						{/each}
-					</nav>
-				</div>
-			</section>
+					<!-- 	{#each Object.entries($_settings) as [key, val] (key)}
+						{#if typeof val === 'string' || typeof val === 'number'}
+							<div>
+								<label for="f-{key}" class="capitalize">{key}</label>
+								<input
+									value={val}
+									class="form-control"
+									type={adapter[key].type}
+									disabled={adapter[key].disabled}
+									name="f-{key}"
+									id="f-{key}" />
+							</div>
+						{/if}
+					{/each} -->
+				{/if}
+
+				<nav class="grid gap-2 pt-4">
+					{#each nav as { titel, href }}
+						{#if $path !== href}
+							<a {href} class="btn">{titel}</a>
+						{/if}
+					{/each}
+				</nav>
+			</FormPanel>
 		</Layer>
 	{:else}
-		<Layer>
-			<div class="m-auto text-center text-red-600">
-				<h1>404</h1>
-				<p>Not found: {$path}</p>
-				<p><a href="/">Start</a></p>
-			</div>
-		</Layer>
+		<NotFound />
 	{/if}
 
 	<G1SideBar bind:sb let:close>
